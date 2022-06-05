@@ -1,0 +1,12 @@
+<%= content_tag :h1, "Welcome to the Sample App!" %>
+<%= content_tag :p, "This app is connected to the Flickr API." %>
+<%= form_with url: root_path, method: :get do |f| %>
+  <%= f.label :flickr_id, "Flickr ID" %>
+  <%= f.text_field :flickr_id, value: params[:flickr_id] %>
+  <%= f.submit "Search" %>
+<% end %>
+<% if @photos.present? %>
+  <%= render partial: 'photos/photo', collection: @photos %>
+<% else %>
+  <%= content_tag :p, "No photos found." %>
+<% end %>
